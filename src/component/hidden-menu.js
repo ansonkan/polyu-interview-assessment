@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   z-index: 900;
   background-color: #dadcdf;
   color: #666;
+  box-shadow: 3px 1px 10px #888;
+  color: #666;
+  opacity: .9;
 `
 
 const HiddenMenu = props => {

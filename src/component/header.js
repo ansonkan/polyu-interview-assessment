@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 
@@ -8,7 +8,8 @@ import SpLogo from "../../static/sp.png"
 import UserLogo from "../../static/user.png"
 import SearchLogo from "../../static/search.svg"
 
-import Sitemenu from "./sitemenu"
+import SiteMenu from "./site-menu"
+import ContactUs from "./contact-us"
 
 const Wrapper = styled.header`
   z-index: 100;
@@ -16,6 +17,7 @@ const Wrapper = styled.header`
   height: 6.5rem;
   background-color: #1a1a1a;
   color: #fff;
+  min-width: 1100px;
 `
 
 const LogoWrapper = styled.div`
@@ -64,20 +66,20 @@ const Submenu = styled.div`
   margin: 1.95rem 5rem;
 `
 
-const submenuListItem = css`
+const SubmenuListItem = styled.li`
   float: left;
   height: 100%;
   margin: 0 .5rem;
 `
 
-const submenuListItemTitle = css`
+const SubmenuListItemTitle = styled.h1`
   line-height: 2.6rem;
   font-size: 1.2rem;
   cursor: pointer;
   font-weight: 400;
 `
 
-const separator = css`
+const Separator = styled.span`
   float: left;
   background-color: #fff;
   width: .1rem;
@@ -131,14 +133,25 @@ const searchLogo = css`
   margin: .3rem .6rem;
 `
 
-const createSubmenuList = arr => arr.map(({ text, hidden }, i) => (
-  <li keys={i} css={submenuListItem}>
-    <h1 css={submenuListItemTitle}>{text}</h1>
-    {hidden}
-  </li>
-)).reduce((prev, curr) => [prev, <li css={submenuListItem}><span css={separator}></span></li>, curr])
-
 const Header = props => {
+  const [expanded, setExpanded] = useState();
+
+  const createSubmenuList = arr => {
+    let separatorKey = 0;
+
+    return arr.map(({ id, text, hidden }, i) => (
+      <SubmenuListItem key={i}>
+        <SubmenuListItemTitle onClick={() => setExpanded(expanded === id ? null : id)}>
+          {text}
+        </SubmenuListItemTitle>
+        {expanded === id ? hidden : null}
+      </SubmenuListItem>
+    )).reduce((prev, curr) => [
+      prev,
+      <SubmenuListItem key={"s" + separatorKey++}><Separator /></SubmenuListItem>,
+      curr
+    ])
+  }
 
   return (
     <Wrapper>
@@ -151,8 +164,8 @@ const Header = props => {
             [
               { src: MlLogo, alt: "ml logo", text: "Model Library" },
               { src: SpLogo, alt: "sp logo", text: "Simulation Platform" }
-            ].map(({ src, alt, text }) => (
-              <li css={menuListItem}>
+            ].map(({ src, alt, text }, i) => (
+              <li key={i} css={menuListItem}>
                 <img src={src} css={smallLogo} alt={alt}></img>
                 <h1 css={menuListItemTitle}>{text}</h1>
               </li>
@@ -163,17 +176,17 @@ const Header = props => {
       <Submenu>
         <MenuList>
           {createSubmenuList([
-            { text: "Site Menu", hidden: <Sitemenu /> },
-            { text: "Contact Us", hidden: <Sitemenu /> }
+            { id: 1, text: "Site Menu", hidden: <SiteMenu closeFunc={setExpanded} /> },
+            { id: 2, text: "Contact Us", hidden: <ContactUs closeFunc={setExpanded} /> }
           ])}
         </MenuList>
       </Submenu>
       <User>
         <MenuList>
-          <li css={submenuListItem}><img src={UserLogo} css={userLogo} alt="user" /></li>
+          <SubmenuListItem key={3}><img src={UserLogo} css={userLogo} alt="user" /></SubmenuListItem>
           {createSubmenuList([
-            { text: "Login", hidden: <Sitemenu /> },
-            { text: "Register", hidden: <Sitemenu /> }
+            { id: 3, text: "Login", hidden: <SiteMenu /> },
+            { id: 4, text: "Register", hidden: <SiteMenu /> }
           ])}
         </MenuList>
       </User>

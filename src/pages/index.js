@@ -11,11 +11,37 @@ const global = css`
     scroll-behavior: smooth;
     font-size: 10px;
     font-family: Montserrat,sans-serif;
+    overflow: auto;
+  }
+
+  body {
+    font-family: Helvetica Neue, Helvetica,Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
   }
 
   body, h1, h2, h3, h4, h5, h6, html, ol, ul {
     margin: 0;
     padding: 0;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
   }
 
   body, html {
