@@ -39,6 +39,7 @@ const CloseButton = styled.a`
 
   &:hover {
     color: red;
+    text-decoration: none;
   }
 `
 
