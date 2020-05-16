@@ -7,6 +7,9 @@ import Header from "../components/header"
 import Main from "../components/main"
 import Footer from "../components/footer"
 
+/* 
+*   Global CSS
+*/
 const global = css`
   html {
     box-sizing: border-box;
@@ -75,13 +78,22 @@ const Wrapper = styled.div`
 
 export default () => (
   <Wrapper>
+    {/* Helmet is the head tag */}
     <Helmet>
       <meta charSet="utf-8" />
       <title>i-MOS</title>
     </Helmet>
+
+    {/* Global CSS */}
     <Global styles={global} />
+
+    {/* The dark nav bar on top */}
     <Header />
+
+    {/* Everything between the nav bar and footer */}
     <Main />
+
+    {/* Footer */}
     <Footer />
   </Wrapper>
 )

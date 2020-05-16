@@ -68,13 +68,13 @@ const Submenu = styled.div`
   margin: 1.95rem 5rem;
 `
 
-const SubmenuListItem = styled.li`
+const ListItem = styled.li`
   float: left;
   height: 100%;
   margin: 0 .5rem;
 `
 
-const SubmenuListItemTitle = styled.h1`
+const ListItemTitle = styled.h1`
   line-height: 2.6rem;
   font-size: 1.2rem;
   cursor: pointer;
@@ -136,21 +136,25 @@ const searchLogo = css`
 `
 
 const Header = props => {
+  // This state controls which hidden menu is shown.
+  // Since only one of them can be shown at a time, 
+  // this state is just a number which is an ID of one of the menu
   const [expanded, setExpanded] = useState();
 
   const createSubmenuList = arr => {
     let separatorKey = 0;
 
     return arr.map(({ id, text, hidden }, i) => (
-      <SubmenuListItem key={i}>
-        <SubmenuListItemTitle onClick={() => setExpanded(expanded === id ? null : id)}>
+      <ListItem key={i}>
+        {/* To use setExpanded to toggle the menu */}
+        <ListItemTitle onClick={() => setExpanded(expanded === id ? null : id)}>
           {text}
-        </SubmenuListItemTitle>
+        </ListItemTitle>
         {expanded === id ? hidden : null}
-      </SubmenuListItem>
+      </ListItem>
     )).reduce((prev, curr) => [
       prev,
-      <SubmenuListItem key={"s" + separatorKey++}><Separator /></SubmenuListItem>,
+      <ListItem key={"s" + separatorKey++}><Separator /></ListItem>,
       curr
     ])
   }
@@ -177,6 +181,7 @@ const Header = props => {
       </Menu>
       <Submenu>
         <MenuList>
+          {/* To pass the setExpanded to the hidden menu so they could close themselves */}
           {createSubmenuList([
             { id: 1, text: "Site Menu", hidden: <SiteMenu closeFunc={setExpanded} /> },
             { id: 2, text: "Contact Us", hidden: <ContactUs closeFunc={setExpanded} /> }
@@ -185,7 +190,7 @@ const Header = props => {
       </Submenu>
       <User>
         <MenuList>
-          <SubmenuListItem key={3}><img src={UserLogo} css={userLogo} alt="user" /></SubmenuListItem>
+          <ListItem key={3}><img src={UserLogo} css={userLogo} alt="user" /></ListItem>
           {createSubmenuList([
             { id: 3, text: "Login", hidden: <Login closeFunc={setExpanded} /> },
             { id: 4, text: "Register", hidden: <Register closeFunc={setExpanded} /> }

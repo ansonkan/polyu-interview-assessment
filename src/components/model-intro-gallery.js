@@ -124,6 +124,7 @@ const ModelIntroGallery = props => {
   ])
 
   useEffect(() => {
+    // To simulate refreshing contents 
     let interval = setInterval(() => {
       setCards([cards[cards.length - 1], ...cards.slice(0, 4)])
     }, 7000)
