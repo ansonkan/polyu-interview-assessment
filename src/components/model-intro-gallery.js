@@ -35,6 +35,7 @@ const ThumbnailWrapper = styled.div`
 
 const Thumbnail = styled.img`
   width: 100%;
+  max-height: 125px;
   padding: 10px;
 `
 
