@@ -1,10 +1,11 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { Global, css } from "@emotion/core"
+import styled from "@emotion/styled"
 
 import Header from "../components/header"
 import Main from "../components/main"
-import styled from "@emotion/styled"
+import Footer from "../components/footer"
 
 const global = css`
   html {
@@ -81,5 +82,6 @@ export default () => (
     <Global styles={global} />
     <Header />
     <Main />
+    <Footer />
   </Wrapper>
 )

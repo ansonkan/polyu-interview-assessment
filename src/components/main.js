@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import MainImage from "../../static/main.png"
 import Intro from "./intro"
 import ModelIntro from "./model-intro"
+import Highlights from "./highlights"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ const Main = props => {
       <LandingImage src={MainImage} alt="Interative modeling and online simulation platform" />
       <Intro />
       <ModelIntro />
+      <Highlights />
     </Wrapper>
   )
 }

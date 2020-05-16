@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 
@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 80px 0;
 `
 
 const Card = styled.div`
@@ -25,9 +26,15 @@ const Card = styled.div`
   background-color: white;
 `
 
+const ThumbnailWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+`
+
 const Thumbnail = styled.img`
   width: 100%;
-  max-height: 125px;
   padding: 10px;
 `
 
@@ -38,7 +45,6 @@ const Desc = styled.div`
   line-height: 1.6em;
   background-color: #dcdcdc;
   padding: 20px;
-  margin-top: 10px;
   word-break: normal;
   overflow: hidden;
 `
@@ -75,9 +81,9 @@ const Rating = styled.div`
 `
 
 const createRatingStars = num => {
-  let arr = new Array(5);
-  for (let i = 0; i < arr.length; i++) {
-    arr.unshift(<Star key={i} src={num-- ? BlueStarIcon : WhiteStarIcon} alt="ws" />)
+  let arr = [];
+  for (let i = 0; i < 5; i++) {
+    arr.unshift(<Star key={i} src={num-- > 0 ? BlueStarIcon : WhiteStarIcon} alt="ws" />)
   }
   return arr;
 }
@@ -116,12 +122,24 @@ const ModelIntroGallery = props => {
     }
   ])
 
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setCards([cards[cards.length - 1], ...cards.slice(0, 4)])
+    }, 7000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [cards])
+
   return (
     <Wrapper>
       {
         cards.map(({ thumbnail, desc, discCount, rating }, i) => (
           <Card key={i}>
-            <Thumbnail src={thumbnail} alt={i} />
+            <ThumbnailWrapper>
+              <Thumbnail src={thumbnail} alt={i} />
+            </ThumbnailWrapper>
             <Desc>
               {desc.map(t => <div>{t}</div>)}
             </Desc>

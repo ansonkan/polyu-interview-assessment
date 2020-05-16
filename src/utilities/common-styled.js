@@ -17,6 +17,12 @@ const Button = styled.button`
   }
 `
 
+const Wrapper = styled.div`
+  width: 100%;
+  padding: 80px 8% 20px 8%;
+`
+
 export {
-  Button
+  Button, 
+  Wrapper
 }

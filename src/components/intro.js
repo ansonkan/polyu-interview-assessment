@@ -8,11 +8,7 @@ import Sh1 from "../../static/intro-sh-1.png"
 import Sh2 from "../../static/intro-sh-2.png"
 
 import { linkBlue } from "../utilities/common-css"
-
-const Wrapper = styled.div`
-  width: 80%;
-  margin: 80px 10% 20px 10%;
-`
+import { Wrapper } from "../utilities/common-styled"
 
 const Upper = styled.div`
   display: flex;

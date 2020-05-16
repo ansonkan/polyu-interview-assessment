@@ -1,15 +1,16 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 
 import ModelIntroGallery from "./model-intro-gallery"
 
 import MlLogo from "../../static/ml-2.png"
 
 import { linkBlue } from "../utilities/common-css"
+import { Wrapper } from "../utilities/common-styled"
 
-const Wrapper = styled.div`
+const WrapperCss = css`
   background-color: #efefef;
-  padding: 50px 10% 20px 10%;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -27,8 +28,8 @@ const LogoWrapper = styled.div`
 `
 
 const Logo = styled.img`
-  width: 50%;
-  padding: 9%;
+  width: 40%;
+  padding: 8%;
   background-color: #e6e6e6;
   border-radius: 10%;
   box-shadow: 2.5px 1.8px 0.4em 0 #9d9d9d;
@@ -94,7 +95,7 @@ const LowerCardUser = styled.p`
 const ModelIntro = props => {
 
   return (
-    <Wrapper>
+    <Wrapper css={WrapperCss}>
       <Upper>
         <LogoWrapper>
           <Logo src={MlLogo} alt="ML logo" />
