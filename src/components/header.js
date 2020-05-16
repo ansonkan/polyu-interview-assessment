@@ -10,6 +10,8 @@ import SearchLogo from "../../static/search.svg"
 
 import SiteMenu from "./site-menu"
 import ContactUs from "./contact-us"
+import Login from "./login"
+import Register from "./register"
 
 const Wrapper = styled.header`
   z-index: 100;
@@ -185,8 +187,8 @@ const Header = props => {
         <MenuList>
           <SubmenuListItem key={3}><img src={UserLogo} css={userLogo} alt="user" /></SubmenuListItem>
           {createSubmenuList([
-            { id: 3, text: "Login", hidden: <SiteMenu /> },
-            { id: 4, text: "Register", hidden: <SiteMenu /> }
+            { id: 3, text: "Login", hidden: <Login closeFunc={setExpanded} /> },
+            { id: 4, text: "Register", hidden: <Register closeFunc={setExpanded} /> }
           ])}
         </MenuList>
       </User>

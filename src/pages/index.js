@@ -2,7 +2,9 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Global, css } from "@emotion/core"
 
-import Header from "../component/header"
+import Header from "../components/header"
+import Main from "../components/main"
+import styled from "@emotion/styled"
 
 const global = css`
   html {
@@ -55,13 +57,29 @@ const global = css`
   div {
     display: block;
   }
+
+  a {
+    text-decoration: none;  
+  }
+
+  a:hover, a:focus {
+    text-decoration: underline;  
+  }
 `
 
-export default () => <div>
-  <Helmet>
-    <meta charSet="utf-8" />
-    <title>i-MOS</title>
-  </Helmet>
-  <Global styles={global} />
-  <Header />
-</div>
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export default () => (
+  <Wrapper>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>i-MOS</title>
+    </Helmet>
+    <Global styles={global} />
+    <Header />
+    <Main />
+  </Wrapper>
+)

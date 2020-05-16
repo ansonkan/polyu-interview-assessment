@@ -3,6 +3,8 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 
 import HiddenMenu from "./hidden-menu"
+import { input } from "../utilities/common-css"
+import { Button } from "../utilities/common-styled"
 
 const hiddenMenuCss = css`
   padding: 2rem 4rem;
@@ -78,44 +80,9 @@ const Label = styled.label`
   line-height: 34px;
 `
 
-const input = css`
-  flex-grow: 1;
-  height: 34px;
-  padding: 6px 12px;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
-  &:focus {
-    border-color: #66afe9;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-  }
-`
-
 const textarea = css`
   height: auto;
   resize: none;
-`
-
-const Button = styled.button`
-  color: #333;
-  background-color: #fff;
-  width: 7.2rem;
-  font-weight: 400;
-  touch-action: manipulation;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 6px 12px;
-
-  &:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-  }
 `
 
 const ContactUs = props => {
