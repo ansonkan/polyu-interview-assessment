@@ -13,19 +13,19 @@ Then the site will be running `http://localhost:8000`!
 
 ## Files and Directories
 
-.
-├── ...
-├── src
-│   ├── components
-│   ├── pages
-│   └── utilities
-│       ├── common-css.js
-│       └── common-styled.js
-├── static
-│   └── ...
-├── gatsby-config.js
-├── README.md
-└── ...
+  .
+  ├── ...
+  ├── src
+  │   ├── components
+  │   ├── pages
+  │   └── utilities
+  │       ├── common-css.js
+  │       └── common-styled.js
+  ├── static
+  │   └── ...
+  ├── gatsby-config.js
+  ├── README.md
+  └── ...
 
 1.  **`/src`**: This directory contains all of the code for front-end.
 
