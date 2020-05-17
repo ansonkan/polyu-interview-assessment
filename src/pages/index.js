@@ -74,6 +74,7 @@ const global = css`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 1100px;
 `
 
 export default () => (

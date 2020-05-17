@@ -19,7 +19,6 @@ const Wrapper = styled.header`
   height: 6.5rem;
   background-color: #1a1a1a;
   color: #fff;
-  min-width: 1100px;
 `
 
 const LogoWrapper = styled.div`
